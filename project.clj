@@ -1,4 +1,4 @@
-(defproject com.github.yjcyxky/remote-fs "0.1.0"
+(defproject com.github.yjcyxky/remote-fs "0.2.0"
   :description "File system utilities for object store in clojure."
   :url "https://github.com/yjcyxky/remote-fs.git"
   :license {:name "Eclipse Public License"
@@ -9,6 +9,8 @@
                  [clj-time "0.15.2"]
                  [org.clojure/data.json "1.0.0"]
                  [io.minio/minio "7.1.0"]
+                 [metosin/spec-tools "0.10.5"]
+                 [metosin/ring-http-response "0.9.1"]
                  [org.clojure/tools.logging "1.1.0"]]
   :plugins [[lein-cloverage "1.0.13"]
             [lein-shell "0.5.0"]

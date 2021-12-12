@@ -1,4 +1,4 @@
-(ns remote-fs.minio
+(ns remote-fs.adapter.minio
   ^{:author "Martynas Drobulis, Jingcheng Yang<yjcyxky@163.com>"
     :description "Clojure Wrapper around Minio-java client"}
   (:require [java-time :as t]

@@ -1,6 +1,6 @@
 (ns remote-fs.core
-  (:require [remote-fs.minio :as mc]
-            [remote-fs.oss :as oss]
+  (:require [remote-fs.adapter.minio :as mc]
+            [remote-fs.adapter.oss :as oss]
             [clojure.tools.logging :as log]
             [clojure.string :as str]))
 

@@ -1,4 +1,4 @@
-(ns remote-fs.oss
+(ns remote-fs.adapter.oss
   ^{:author "Jingcheng Yang<yjcyxky@163.com>"
     :description "Clojure Wrapper around oss-java client"}
   (:require [java-time :as t]
