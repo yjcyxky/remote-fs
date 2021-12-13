@@ -1,4 +1,4 @@
-(defproject com.github.yjcyxky/remote-fs "0.2.1"
+(defproject com.github.yjcyxky/remote-fs "0.2.2"
   :description "File system utilities for object store in clojure."
   :url "https://github.com/yjcyxky/remote-fs.git"
   :license {:name "Eclipse Public License"
@@ -31,7 +31,7 @@
                                     :username :gpg
                                     :password :gpg}]]
 
-  :aliases {"update-readme-version" ["shell" "sed" "-i" "s/\\\\[com\\.github\\.yjcyxky\\\\/remote-fs \"[0-9.]*\"\\\\]/[com\\.github\\.yjcyxky\\\\/remote-fs \"${:version}\"]/" "README.md"]}
+  :aliases {"update-readme-version" ["shell" "sed" "-i" "" "s/\\\\[com\\.github\\.yjcyxky\\\\/remote-fs \"[0-9.]*\"\\\\]/[com\\.github\\.yjcyxky\\\\/remote-fs \"${:version}\"]/" "README.md"]}
   :release-tasks [["shell" "git" "diff" "--exit-code"]
                   ["change" "version" "leiningen.release/bump-version"]
                   ["change" "version" "leiningen.release/bump-version" "release"]

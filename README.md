@@ -6,7 +6,7 @@
 A clojure library is designed to access the object store (such as oss, s3, minio).
 
 ```clj
-[com.github.yjcyxky/remote-fs "0.1.0"]
+[com.github.yjcyxky/remote-fs "0.2.2"]
 ```
 
 ## Usage

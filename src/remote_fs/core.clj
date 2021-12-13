@@ -5,7 +5,7 @@
             [clojure.string :as str]))
 
 (def services
-  ;; TODO: services can't be a private when it is used in with-conn macro.
+  "TODO: services can't be a private when it is used in with-conn macro."
   (atom {:oss nil
          :minio nil
          :s3 nil}))
@@ -16,10 +16,11 @@
 (def ^:dynamic *conn*)
 
 (defn- get-current-conn
+  "Get the current connection. The user must set the conn before using the related functions."
   []
   (if (bound? #'*conn*)
     *conn*
-    (throw (Exception. "Not in with-conn environment"))))
+    (throw (Exception. "Not in with-conn environment."))))
 
 (def ^:private service-map
   {:minio (mc/init)
@@ -36,10 +37,12 @@
   (fn-keyword (service-map (keyword @service))))
 
 (defn get-protocol
+  "Which protocol is used in the current connect?"
   []
   (protocol-map (keyword @service)))
 
 (defn connect
+  "Generate a connection by using the defined conn information."
   []
   (let [conn-info (@services (keyword @service))
         {:keys [fs-endpoint fs-access-key fs-secret-key]} conn-info]
@@ -132,7 +135,7 @@
   "When you use minio service, all file paths need to reset as the local path.
    e.g. minio://bucket-name/object-key --> /datains/minio/bucket-name/object-key
 
-   ; TODO: need to support more types for e's value.
+   TODO: need to support more types for e's value.
   "
   [e fs-rootdir]
   (let [protocol "minio://"
@@ -152,7 +155,7 @@
   "When you use minio service, all file paths need to reset as the local path.
    e.g. /datains/minio/bucket-name/object-key --> minio://bucket-name/object-key
 
-   ; TODO: need to support more types for e's value.
+   TODO: need to support more types for e's value.
   "
   [e fs-rootdir]
   (let [protocol "minio://"
