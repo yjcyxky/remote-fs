@@ -25,7 +25,7 @@
   [v]
   (reset! blacklist v))
 
-(def fs-service
+(def routes
   [""
    {:swagger {:tags ["File System Service"]}}
 
