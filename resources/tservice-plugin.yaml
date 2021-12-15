@@ -1,0 +1,27 @@
+info:
+  name: Remote Filesystem
+  version: v0.1.0
+  description: File system utilities for object store in clojure.
+  category: Tool
+  home: https://github.com/yjcyxky/remote-fs
+  source: yjcyxky
+  short_name: remote-fs
+  icons:
+    - src: ""
+      type: image/png
+      sizes: 192x192
+  author: Jingcheng Yang
+  maintainers:
+    - Jingcheng Yang
+  tags:
+    - Tool
+  readme: https://raw.githubusercontent.com/yjcyxky/remote-fs/master/README.md
+plugin:
+  name: remote-fs
+  display-name: Remote Filesystem
+  lazy-load: false
+init:
+  - step: load-namespace
+    namespace: remote-fs.route
+  - step: register-plugin
+    entrypoint: remote-fs.route/routes
