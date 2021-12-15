@@ -17,7 +17,14 @@
             [lein-ancient "0.6.15"]
             [lein-changelog "0.3.2"]]
   :repl-options {:init-ns remote-fs.core}
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.0"]]}}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.0"]]}
+             :uberjar {:auto-clean    true
+                       :aot           :all
+                       :omit-source   true
+                       :javac-options ["-target" "1.8", "-source" "1.8"]
+                       :target-path   "target/%s"
+                       :resource-paths ["resources"]
+                       :uberjar-name  "remote-fs.tservice-plugin.jar"}}
 
   :repositories [["central" "https://maven.aliyun.com/repository/central"]
                  ["jcenter" "https://maven.aliyun.com/repository/jcenter"]

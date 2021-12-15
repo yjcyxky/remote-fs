@@ -24,4 +24,4 @@ init:
   - step: load-namespace
     namespace: remote-fs.route
   - step: register-plugin
-    entrypoint: remote-fs.route/routes
+    entrypoint: remote-fs.route/metadata
