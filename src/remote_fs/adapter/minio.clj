@@ -82,7 +82,7 @@
   ([conn bucket name]
    (-> (.statObject conn bucket name)
        objectStat->map
-       (assoc  :key name)))
+       (assoc :key name)))
   ([conn {:keys [bucket name]}]
    (-> (.statObject conn bucket name)
        objectStat->map
@@ -120,6 +120,15 @@
   [conn bucket-name]
   (.removeBucket conn bucket-name))
 
+(defn exists?
+  "Whether the object exists in the bucket"
+  [conn bucket-name object]
+  (try
+    (.statObject conn bucket-name object)
+    true
+    (catch ErrorResponseException ex
+      (throw ex))))
+
 (defn remove-object! [conn bucket object]
   (.removeObject conn bucket object))
 
@@ -152,6 +161,7 @@
   {:make-bucket      make-bucket
    :connect          connect
    :list-buckets     list-buckets
+   :exists           exists?
    :put-object       put-object
    :get-object       get-object
    :download-object  download-object

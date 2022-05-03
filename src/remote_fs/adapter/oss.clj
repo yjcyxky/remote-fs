@@ -132,6 +132,11 @@
 (defn remove-object! [conn bucket object]
   (.deleteObject conn bucket object))
 
+(defn exists?
+  "Returns true if the object exists"
+  [conn ^String bucket-name ^String subpath]
+  (.doesObjectExist conn bucket-name subpath))
+
 (defn get-upload-url
   "Returns presigned and named upload url for direct upload from the client 
    See docs: https://help.aliyun.com/document_detail/32016.html
@@ -169,6 +174,7 @@
   {:make-bucket      make-bucket
    :connect          connect
    :list-buckets     list-buckets
+   :exists?          exists?
    :put-object       put-object
    :get-object       get-object
    :download-object  download-object
