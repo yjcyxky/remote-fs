@@ -109,6 +109,10 @@
   [bucket]
   ((get-fn :remove-bucket) (get-current-conn) bucket))
 
+(defn exists?
+  [bucket key]
+  ((get-fn :exists?) (get-current-conn) bucket key))
+
 (defn remove-object!
   [bucket key]
   ((get-fn :remove-object) (get-current-conn) bucket key))
