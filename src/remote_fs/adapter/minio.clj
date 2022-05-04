@@ -126,8 +126,8 @@
   (try
     (.statObject conn bucket-name object)
     true
-    (catch ErrorResponseException ex
-      (throw ex))))
+    (catch Exception ex
+      false)))
 
 (defn remove-object! [conn bucket object]
   (.removeObject conn bucket object))

@@ -135,7 +135,10 @@
 (defn exists?
   "Returns true if the object exists"
   [conn ^String bucket-name ^String subpath]
-  (.doesObjectExist conn bucket-name subpath))
+  (try
+    (.doesObjectExist conn bucket-name subpath)
+    (catch OSSException e
+      false)))
 
 (defn get-upload-url
   "Returns presigned and named upload url for direct upload from the client 

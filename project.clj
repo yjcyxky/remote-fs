@@ -1,4 +1,4 @@
-(defproject com.github.yjcyxky/remote-fs "0.2.4"
+(defproject com.github.yjcyxky/remote-fs "0.2.5"
   :description "File system utilities for object store in clojure."
   :url "https://github.com/yjcyxky/remote-fs.git"
   :license {:name "Eclipse Public License"
