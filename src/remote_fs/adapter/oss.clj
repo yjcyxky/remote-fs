@@ -115,11 +115,9 @@
   ([conn bucket filter]
    (map item->map (.getObjectSummaries
                    (.listObjects conn (doto (new ListObjectsRequest bucket)
-                                        (.withMaxKeys 1000)
                                         (.withPrefix filter))))))
   ([conn bucket filter recursive]
    (let [objects (.listObjects conn (doto (new ListObjectsRequest bucket)
-                                      (.withMaxKeys 1000)
                                       (.withPrefix filter)
                                       (.setDelimiter (if (some? recursive) "/" ""))))]
      (map item->map (concat (.getObjectSummaries objects) (.getCommonPrefixes objects))))))
