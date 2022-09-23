@@ -108,18 +108,24 @@
      :storage-class (.getStorageClass item)}))
 
 (defn list-objects
-  "
+  "List objects in a bucket.
+   
+   ## Examples
+   (list-objects conn \"test\")
+   (list-objects conn \"test\" \"data/\")
+   (list-objects conn \"test\" nil false)
   "
   ([conn bucket]
-   (map item->map (.getObjectSummaries (.listObjects conn bucket))))
+   (list-objects conn bucket nil false))
   ([conn bucket filter]
-   (map item->map (.getObjectSummaries
-                   (.listObjects conn (doto (new ListObjectsRequest bucket)
-                                        (.withPrefix filter))))))
-  ([conn bucket filter recursive]
-   (let [objects (.listObjects conn (doto (new ListObjectsRequest bucket)
-                                      (.withPrefix filter)
-                                      (.setDelimiter (if (some? recursive) "/" ""))))]
+   (list-objects conn bucket filter false))
+  ([conn bucket filter recursive & {:keys [max-keys] :or {max-keys 100}}]
+   (let [request (new ListObjectsRequest bucket)
+         request (if (empty? filter) request (.withPrefix request filter))
+         request (if recursive (.withDelimiter request "/") request)
+         request (.withMaxKeys request (int max-keys))
+         objects (.listObjects conn request)]
+     ;; getCommonPrefixes will return you a list of directories when you set recursive argument as true, otherwise you will got nothing.
      (map item->map (concat (.getObjectSummaries objects) (.getCommonPrefixes objects))))))
 
 (defn remove-bucket!

@@ -1,4 +1,4 @@
-(defproject com.github.yjcyxky/remote-fs "0.2.5"
+(defproject com.github.yjcyxky/remote-fs "0.2.6"
   :description "File system utilities for object store in clojure."
   :url "https://github.com/yjcyxky/remote-fs.git"
   :license {:name "Eclipse Public License"
@@ -34,7 +34,7 @@
                         ["jcenter" "https://maven.aliyun.com/repository/jcenter"]
                         ["clojars" "https://mirrors.tuna.tsinghua.edu.cn/clojars/"]]
 
-  :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
+  :deploy-repositories [["clojars" {:url "https://repo.clojars.org"
                                     :username :gpg
                                     :password :gpg}]]
 

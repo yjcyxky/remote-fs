@@ -70,7 +70,8 @@
      (binding [*conn* (connect)]
        (try
          (when *conn* ~@body)
-         (catch Exception e# (str "Exception: " (.getMessage e#)))
+         (catch Exception e# (ex-info (.getMessage e#) {:context e#
+                                                        :status "Failed"}))
          ;; TODO: How to avoid leak memory?
          ;; The MinioClient has not shutdown method.
          (finally (swallow-exceptions (.shutdown *conn*)))))))
